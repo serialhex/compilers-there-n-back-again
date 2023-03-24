@@ -1,0 +1,15 @@
+(load "tests/tests-driver.scm")
+(load "tests/tests-1.1-req.scm")
+(load "fixes.scm")
+
+(define (emit-program x)
+  (unless (integer? x) (error "Not an integer!"))
+  (emit "PUBLIC	scheme_entry")
+  (emit "_TEXT	SEGMENT")
+  (emit "scheme_entry PROC")
+  (emit "	mov	eax, ~s" x)
+  (emit "scheme_entry ENDP")
+  (emit "_TEXT	ENDS")
+  (emit "END"))
+
+(test-all)
