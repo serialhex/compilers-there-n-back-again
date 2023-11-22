@@ -15,7 +15,12 @@
 ;    (close-output-port p)))
 
 (define (build)
+<<<<<<< HEAD
   (unless (zero? (system "gcc -o stst runtime.c stst.s"))
+=======
+  (printf "nope")
+  (unless (zero? (system "gcc -o stst startup.c stst.s"))
+>>>>>>> 657bf21 (updating to push)
     (error 'make "could not build target")))
 
 (define (execute)
@@ -25,8 +30,14 @@
 
 
 (define (build-program expr)
+<<<<<<< HEAD
   (run-compile expr)
   (build))
+=======
+  (printf "nope")
+   (run-compile expr)
+   (build))
+>>>>>>> 657bf21 (updating to push)
 
 (define (get-string)
   (with-output-to-string
@@ -100,11 +111,20 @@
 
 (define show-compiler-output (make-parameter #f))
 
+<<<<<<< HEAD
 (define (run-compile expr)
   (let ([p (open-output-file "stst.s" 'replace)])
     (parameterize ([compile-port p])
        (emit-program expr))
     (close-output-port p)))
+=======
+;(define (run-compile expr)
+;  (let ([p (open-output-file "stst.s" 'replace)])
+;    (parameterize ([compile-port p])
+;       (printf "or am i there?")
+;       (compile-program expr))
+;    (close-output-port p)))
+>>>>>>> 657bf21 (updating to push)
 
 
 (define (execute)
