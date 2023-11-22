@@ -3,7 +3,6 @@
 
 (load "compiler.scm")
 
-
-;(test-all)
-;(exit)
+(test-all)
+(exit)
 

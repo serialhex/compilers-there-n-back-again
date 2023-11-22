@@ -9,14 +9,13 @@
            '(test-name [expr string  output-string] ...)
             all-tests))]))
 
-(define (run-compile expr)
-  (let ([p (open-output-file "stst.s" 'replace)])
-    (compile-program expr p)
-    (close-output-port p)))
+;(define (run-compile expr)
+;  (let ([p (open-output-file "stst.s" 'replace)])
+;    (compile-program expr p)
+;    (close-output-port p)))
 
 (define (build)
-  (printf "nope")
-  (unless (zero? (system "gcc -o stst startup.c stst.s"))
+  (unless (zero? (system "gcc -o stst runtime.c stst.s"))
     (error 'make "could not build target")))
 
 (define (execute)
@@ -26,9 +25,8 @@
 
 
 (define (build-program expr)
-  (printf "nope")
-   (run-compile expr)
-   (build))
+  (run-compile expr)
+  (build))
 
 (define (get-string)
   (with-output-to-string
@@ -102,12 +100,11 @@
 
 (define show-compiler-output (make-parameter #f))
 
-;(define (run-compile expr)
-;  (let ([p (open-output-file "stst.s" 'replace)])
-;    (parameterize ([compile-port p])
-;       (printf "or am i there?")
-;       (compile-program expr))
-;    (close-output-port p)))
+(define (run-compile expr)
+  (let ([p (open-output-file "stst.s" 'replace)])
+    (parameterize ([compile-port p])
+       (emit-program expr))
+    (close-output-port p)))
 
 
 (define (execute)
