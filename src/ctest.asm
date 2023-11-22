@@ -21,7 +21,7 @@ _scheme_entry PROC
 
 ; 2    :   return 7; /* should print 7 */
 
-	mov	eax, 82
+	mov	eax, 7
 
 ; 3    : }
 
