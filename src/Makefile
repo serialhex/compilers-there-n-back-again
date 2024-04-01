@@ -23,12 +23,15 @@ $(TARGET): $(SRCS:.c=.o)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-.PHONY: asm
+.PHONY: asm scheme clean
 
 %.S: %.c
 	$(CC) --omit-frame-pointer -S -o $@ $<
 
 asm: $(SRCS:.c=.S)
+
+scheme:
+	chez --script testit.scm
 
 # Clean up the object files and executable
 clean:
