@@ -30,7 +30,7 @@ $(TARGET): $(SRCS:.c=.o)
 
 asm: $(SRCS:.c=.S)
 
-scheme:
+scheme: runtime.c
 	chez --script testit.scm
 
 # Clean up the object files and executable

@@ -18,7 +18,7 @@
   (or (fixnum? x) (boolean? x) (char? x) (null? x)))
 
 (define (shift-tag val tag)
-  (bitwize-ior (ash val 8) tag))
+  (logior (ash val 8) tag))
 
 (define (immediate-rep x)
   (cond
